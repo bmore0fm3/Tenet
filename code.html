@@ -63,17 +63,106 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call Hello World
-                            function HelloWorld(){
-                            alert("hello world");
+                            //controller function
+                            function getValues(){
+                            
+                                document.getElementById("alert").classList.add("invisible");
+                            
+                                let userString = document.getElementById("userString").value;
+                                let reversedString = reverseString(userString);
+                                let palindromeCheck = palindromeChecker(reversedString, userString);
+                            
+                                displayString(reversedString, userString, palindromeCheck);
+                            
+                            }
+                            
+                            
+                            //logic functions
+                            function reverseString(userString){
+                                let revString = [];
+                            
+                                for (let index = userString.length - 1; index >= 0; index --){
+                                    revString += userString[index];
+                                }
+                            
+                                return revString
+                            }
+                            
+                            function palindromeChecker(revString, userString) {
+                                isPalindrome = "";
+                                revString = revString.toLowerCase();
+                                userString = userString.toLowerCase();
+                            
+                                if (revString == userString) {
+                                    isPalindrome = true;
+                                } else {
+                                    isPalindrome = false;
+                                }
+                            
+                                return isPalindrome
+                            }
+                            
+                            //display function
+                            function displayString(reversedString, userString, palindromeCheck) {
+                            
+                                if (palindromeCheck) {
+                                    //write message to page
+                                    document.getElementById("msg").innerHTML = `Your string reversed is: ${reversedString}`;
+                            
+                                    //Change alert color
+                                    document.getElementById("alert").classList.remove("alert-danger");
+                                    document.getElementById("alert").classList.add("alert-warning");
+                            
+                                    //show alert box and change alert heading
+                                    document.getElementById("msgHeading").innerHTML = "Yay!"
+                                    document.getElementById("alert").classList.remove("invisible");
+                                } else {
+                                    //write message to page
+                                    document.getElementById("msg").innerHTML = `Your string is: ${userString}. The reversed string: ${reversedString}`;
+                            
+                                    //Change message header and alert box color
+                                    document.getElementById("msgHeading").innerHTML = "Nope!"
+                            
+                                    document.getElementById("alert").classList.remove("alert-warning");
+                                    document.getElementById("alert").classList.add("alert-danger");
+                            
+                                    //show alert box
+                                    document.getElementById("alert").classList.remove("invisible");
+                            
+                                }
+                            
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p> The code is structurd in one function</p>
-                    <h5>Hello World!</h5>
-                    <p>Hello World is a function that displays an alert with a message of Hello World!</p>
+                    <p> The code is structured in four functions</p>
+                    <h5>getValues()</h5>
+                    <p>This is a controller function. It adds the invisible class to the alert elementID. Next, it captures the user
+                        input from the userString elementID. The reverseString function is called and the return value is stored in 
+                        the reversedString variable. PalindromeChecker is called to determine if the string is in fact a palidrome.
+                        Finally, displayString is called to present the result to the user. 
+                    </p>
+
+                    <h5>reverseString()</h5>
+                    <p>This is a logic function. It takes in userString as input. The function creates and array named revString. It then
+                        uses a for loop to traverse the string backwards to save each character to the revString array. Finally, the 
+                        function returns the array. 
+                    </p>
+
+                    <h5>palindromeChecker()</h5>
+                    <p>This is a function takes the userString and reversed string as input. The function compares both strings. If the strings match
+                        then it is a palidrome. If the strings do not match, then it is not a palidrome. The result is saved in the isPalindrome bool 
+                        variable. 
+                    </p>
+
+                    <h5>displayString()</h5>
+                    <p>This is a view function. This function uses the reveresedString, userString, and palindromeCheck as input. It locates the msg elementID in the DOM
+                        and updates the innerHTML with a template variable. If the alert is true, then it displays the reversedString and a yellow alert.
+                        If the string is not a palindrome, the alert box header, color, and message is changed for the user. 
+                        Finally, it removes the the invisbile class from the alert elementID. 
+                    </p>
+
                 </div>
             </div>
         </div>

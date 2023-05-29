@@ -53,7 +53,7 @@ function displayString(reversedString, userString, palindromeCheck) {
         document.getElementById("alert").classList.remove("invisible");
     } else {
         //write message to page
-        document.getElementById("msg").innerHTML = `Your string is: ${userString}. The reversed string: ${reversedString}`;
+        document.getElementById("msg").innerHTML = `Your string is ${userString}. The reversed string is ${reversedString}`;
 
         //Change message header and alert box color
         document.getElementById("msgHeading").innerHTML = "Nope!"
